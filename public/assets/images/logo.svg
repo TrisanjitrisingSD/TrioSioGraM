@@ -1,0 +1,26 @@
+<svg width="650" height="220" viewBox="0 0 650 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="100%" y2="0">
+      <stop offset="0%" stop-color="#FF512F" />
+      <stop offset="40%" stop-color="#F9D423" />
+      <stop offset="70%" stop-color="#00C9FF" />
+      <stop offset="100%" stop-color="#92FE9D" />
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded square with pixelated corner -->
+  <g transform="translate(10, 20)">
+    <rect x="0" y="0" width="60" height="60" rx="12" stroke="url(#grad)" stroke-width="6" fill="none"/>
+    <text x="16" y="44" font-size="36" font-weight="bold" fill="url(#grad)">T</text>
+
+    <!-- Pixel effect -->
+    <rect x="52" y="-6" width="6" height="6" fill="url(#grad)" />
+    <rect x="58" y="4" width="4" height="4" fill="url(#grad)" />
+    <rect x="50" y="10" width="3" height="3" fill="url(#grad)" />
+  </g>
+
+  <!-- Brand Text (Shifted Right) -->
+  <text x="166" y="64" font-family="Segoe UI, sans-serif" font-size="55" font-weight="800" fill="url(#grad)">
+    TrioSioGraM
+  </text>
+</svg>

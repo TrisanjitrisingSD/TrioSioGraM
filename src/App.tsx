@@ -1,5 +1,4 @@
-
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom"; // Add useLocation
 
 import {
   Home,
@@ -21,8 +20,13 @@ import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 
 const App = () => {
+  const location = useLocation();
+  // Determine if the current route is an authentication route
+  const isAuthRoute = location.pathname === '/sign-in' || location.pathname === '/sign-up';
+
   return (
-    <main className="flex h-screen">
+    // Apply w-screen and the conditional background class
+    <main className={`flex h-screen w-screen ${isAuthRoute ? 'auth-bg' : 'main-bg'}`}>
       <Routes>
         {/* public routes */}
         <Route element={<AuthLayout />}>

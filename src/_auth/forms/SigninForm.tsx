@@ -1,4 +1,3 @@
-
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -18,10 +17,11 @@ import { useSignInAccount } from "@/lib/react-query/queriesAndMutations";
 const SigninForm = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
-  const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
+  const { checkAuthUser, isLoading: isUserLoading } = useUserContext(); // isUserLoading comes from AuthContext
 
   // Query
-  const { mutateAsync: signInAccount, isLoading } = useSignInAccount();
+  // Changed isLoading to isPending for react-query mutation
+  const { mutateAsync: signInAccount, isPending: isSigningIn } = useSignInAccount(); // Destructure isPending
 
   const form = useForm<z.infer<typeof SigninValidation>>({
     resolver: zodResolver(SigninValidation),
@@ -36,7 +36,6 @@ const SigninForm = () => {
 
     if (!session) {
       toast({ title: "Login failed. Please try again." });
-      
       return;
     }
 
@@ -44,11 +43,9 @@ const SigninForm = () => {
 
     if (isLoggedIn) {
       form.reset();
-
       navigate("/");
     } else {
       toast({ title: "Login failed. Please try again.", });
-      
       return;
     }
   };
@@ -95,7 +92,8 @@ const SigninForm = () => {
           />
 
           <Button type="submit" className="shad-button_primary">
-            {isLoading || isUserLoading ? (
+            {/* Use isSigningIn (from useSignInAccount) or isUserLoading (from AuthContext) */}
+            {isSigningIn || isUserLoading ? (
               <div className="flex-center gap-2">
                 <Loader /> Loading...
               </div>

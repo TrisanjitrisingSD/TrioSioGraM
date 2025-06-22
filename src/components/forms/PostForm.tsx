@@ -9,7 +9,7 @@ import FileUploader from "../shared/FileUploader"
 import { PostValidation } from "@/lib/validation"
 import { Models } from "appwrite"
 import { useUserContext } from "@/context/AuthContext"
-import { toast, useToast } from "@/hooks/use-toast"
+import { useToast } from "@/hooks/use-toast"
 import { useNavigate } from "react-router-dom"
 import { useCreatePost, useUpdatePost } from "@/lib/react-query/queriesAndMutations"
 
@@ -68,7 +68,7 @@ const PostForm = ({post,action}:PostFormProps) => {
 
       const newPost=await createPost({
         ...values,
-        userId:user.id,
+        userId:user.$id,
       })
 
       if(!newPost){

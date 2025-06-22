@@ -1,35 +1,36 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
-import AuthLayout from './_auth/AuthLayout';
-import SigninForm from './_auth/forms/SigninForm';
-import SignupForm from './_auth/forms/SignupForm';
+
+import { Routes, Route } from "react-router-dom";
+
 import {
-  AllUsers,
-  CreatePost,
-  EditPost,
-  Explore,
   Home,
-  PostDetails,
-  Profile,
+  Explore,
   Saved,
-  UpdateProfile
-} from './_root/pages';
-import RootLayout from './_root/RootLayout';
-import './globals.css';
-import { Toaster } from './components/ui/toaster';
+  CreatePost,
+  Profile,
+  EditPost,
+  PostDetails,
+  UpdateProfile,
+  AllUsers,
+} from "@/_root/pages";
+import AuthLayout from "./_auth/AuthLayout";
+import RootLayout from "./_root/RootLayout";
+import SignupForm from "@/_auth/forms/SignupForm";
+import SigninForm from "@/_auth/forms/SigninForm";
+import { Toaster } from "@/components/ui/toaster";
+
+import "./globals.css";
 
 const App = () => {
-  const location = useLocation();
-
-  const isAuthRoute =
-    location.pathname === '/sign-in' || location.pathname === '/sign-up';
-
   return (
-    <main className={`flex h-screen w-screen ${isAuthRoute ? 'auth-bg' : 'main-bg'}`}>
+    <main className="flex h-screen">
       <Routes>
+        {/* public routes */}
         <Route element={<AuthLayout />}>
           <Route path="/sign-in" element={<SigninForm />} />
           <Route path="/sign-up" element={<SignupForm />} />
         </Route>
+
+        {/* private routes */}
         <Route element={<RootLayout />}>
           <Route index element={<Home />} />
           <Route path="/explore" element={<Explore />} />

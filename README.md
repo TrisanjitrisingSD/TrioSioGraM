@@ -83,7 +83,7 @@ Made with:
 ## 👨‍💻 Author
 
 **Trisanjit Das**  
-[🌐 Portfolio](https://trio-sio-gra-m.vercel.app) 
+[🌐 Portfolio](https://trisanjit-rising-hope.netlify.app) 
 
 [💼 LinkedIn](https://www.linkedin.com/in/trisanjit-das-60482728b) 
 
